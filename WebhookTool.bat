@@ -43,7 +43,8 @@ goto menu
 
 :hi
 cls
-echo [YOOOOO]
+echo YOOOOO
+echo.
 echo you found secret menu so hiii i guess you readed the code ?????
 echo add me on discord and like send me a message saying 1572 and i can be ur friend if u want to :3
 pause
