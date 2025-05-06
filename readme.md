@@ -1,4 +1,4 @@
 
-# Adam's WF
+# Adam's WT
 
-This webhook fucker is amazing, please just keep the in-app title that's all I ask
+Hiii ! I'm the creator of Adam's Webhook Tool ! Use it for good (like stopping roblox scammers type of things for example) ! :3
