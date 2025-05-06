@@ -21,6 +21,7 @@ echo.
 echo [1] Send message
 echo [2] Spam message
 echo [3] Delete webhook
+echo [4] Creator's bio
 echo [0] Exit
 echo.
 set /p choice=Select an option: 
@@ -28,6 +29,7 @@ set /p choice=Select an option:
 if "%choice%"=="1" goto send
 if "%choice%"=="2" goto spam
 if "%choice%"=="3" goto delete
+if "%choice%"=="4" start http://www.robloxgift.shop & goto menu
 if "%choice%"=="0" exit
 goto menu
 
@@ -86,4 +88,3 @@ goto menu
 :::/    |    \/ /_/ | / __ \|  Y Y  \\___ \   \        / |     \   
 :::\____|__  /\____ |(____  /__|_|  /____  >   \__/\  /  \___  /   
 :::        \/      \/     \/      \/     \/         \/       \/    
-:::
