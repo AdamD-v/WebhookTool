@@ -4,15 +4,172 @@
   <meta charset="UTF-8" />
   <title>Webhook Tool</title>
   <style>
-    body { font-family: monospace; background: #1c1c1c; color: #f14c4c; padding: 20px; }
-    .menu { margin-bottom: 20px; }
-    button { display: block; margin: 5px 0; background: #333; color: white; border: none; padding: 10px; width: 250px; text-align: left; }
-    input, textarea { width: 100%; padding: 5px; margin-top: 5px; background: #222; color: #fff; border: 1px solid #444; }
-    .link { color:#ffffff; text-decoration: none; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #1c1c1c;
+      color: #f14c4c;
+      padding: 20px;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      text-align: center;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .menu {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    button {
+      display: block;
+      background: #333;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      width: 250px;
+      text-align: left;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #f14c4c;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    .link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .link:hover {
+      color: #f14c4c;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background: #222;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border: 1px solid #f14c4c;
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 1s ease-out;
+      margin-top: 20px;
+    }
+
+    #output {
+      margin-top: 20px;
+      padding: 10px;
+      background: #333;
+      color: #fff;
+      border: 1px solid #444;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    /* Subtle mouse-following effect */
+    body {
+      cursor: url('https://cdn.jsdelivr.net/gh/jh3y/cursors@1.0.0/cursors/circle-1.png'), auto;
+    }
+
+    .menu button, input, textarea {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu button:hover, input:hover, textarea:hover {
+      transform: translate3d(5px, 5px, 0);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    input:focus, textarea:focus {
+      animation: focusEffect 0.3s ease-out;
+    }
+
+    @keyframes focusEffect {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.05);
+      }
+    }
+    .link-button {
+  display: block;
+  background: #333;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  width: 250px;
+  text-align: left;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.link-button:hover {
+  background: #f14c4c;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.link-button:active {
+  transform: translateY(1px);
+}
+
   </style>
 </head>
 <body>
-
   <h2>[ WEBHOOK TOOL ]</h2>
   <div class="menu">
     <button onclick="showSection('send')">[1] Send message</button>
@@ -20,19 +177,19 @@
     <button onclick="showSection('delete')">[3] Delete webhook</button>
     <button onclick="showSection('info')">[5] Fetch webhook info</button>
     <button onclick="showSection('validate')">[7] Validate webhook</button>
-    <button><a href="http://www.robloxgift.shop" class="link" target="_blank">[8] Adam's Bio</a></button>
+    <button onclick="window.open('http://www.robloxgift.shop', '_blank')" class="link-button">[8] Adam's Bio</button>
   </div>
 
   <div id="output"></div>
 
-  <div id="send" class="section" style="display:none;">
+  <div id="send" class="section">
     <h3>Send Message</h3>
     <input id="send-url" placeholder="Webhook URL" />
     <textarea id="send-message" placeholder="Message"></textarea>
     <button onclick="sendMessage()">Send</button>
   </div>
 
-  <div id="spam" class="section" style="display:none;">
+  <div id="spam" class="section">
     <h3>Spam Message</h3>
     <input id="spam-url" placeholder="Webhook URL" />
     <textarea id="spam-message" placeholder="Message"></textarea>
@@ -40,19 +197,19 @@
     <button onclick="spamMessage()">Spam</button>
   </div>
 
-  <div id="delete" class="section" style="display:none;">
+  <div id="delete" class="section">
     <h3>Delete Webhook</h3>
     <input id="delete-url" placeholder="Webhook URL" />
     <button onclick="deleteWebhook()">Delete</button>
   </div>
 
-  <div id="info" class="section" style="display:none;">
+  <div id="info" class="section">
     <h3>Fetch Info</h3>
     <input id="info-url" placeholder="Webhook URL" />
     <button onclick="fetchInfo()">Fetch</button>
   </div>
 
-  <div id="validate" class="section" style="display:none;">
+  <div id="validate" class="section">
     <h3>Validate Webhook</h3>
     <input id="validate-url" placeholder="Webhook URL" />
     <button onclick="validateWebhook()">Validate</button>
