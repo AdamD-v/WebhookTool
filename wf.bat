@@ -3,7 +3,6 @@ setlocal EnableDelayedExpansion
 mode 100,40
 color 0c
 
-:: Display Loading Screen with Red Text and ASCII Art
 cls
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
 echo.
@@ -81,7 +80,6 @@ pause
 goto menu
 
 
-:: ASCII Art Section
 :::   _____       .___            /\          __      _____________
 :::  /  _  \    __| _/____    ____)/  ______ /  \    /  \_   _____/
 ::: /  /_\  \  / __ |\__  \  /     \ /  ___/ \   \/\/   /|    __)  
