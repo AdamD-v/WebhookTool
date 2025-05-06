@@ -6,4 +6,11 @@
 
 
 
-PYTHON VERSION SOOOONNN!!! HTML VERSION SOOONNNNN!!!!!!
+4 python then do this:
+
+Open CMD as administrator
+write :
+pip install requests
+
+wait for it to install, then write
+pip install pyperclip
